@@ -14,6 +14,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -380,8 +382,8 @@
                 <span id="element"></span>
                 <div class="buttons">
 
-                    <!--<a href="AnupamDhimanResume29.pdf" download class="btn">Download Resume</a>-->
-                    <a href="AnupamDhimanResume29.pdf" download> <button class="btn">Download Resume</button></a>
+                    <!--<a href="AnupamDhiman_InternshalaResume(12)(1).pdf" download class="btn">Download Resume</a>-->
+                    <a href="AnupamDhiman_InternshalaResume(12)(1).pdf" download> <button class="btn">Download Resume</button></a>
 
                     <a href="https://github.com/anupamdhiman22" target="_blank" class="btn">Visit Github</a>
                 </div>
@@ -471,7 +473,7 @@
             </div>
         </section>
         <hr>
-        <section id="cont-me" class="thirdsection">
+       <!-- <section id="cont-me" class="thirdsection">
            
                 <h1>Contact Me</h1>
                 <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
@@ -481,6 +483,20 @@
                     <button type="submit" class="btn">Send</button>
                 </form>
            
+        </section>-->
+
+        <section id="cont-me" class="thirdsection">
+
+            <h1>Contact Me</h1>
+            <!--<form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">-->
+                <form class="contact-form" id="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="_replyto" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <!--<button type="submit" class="btn" value="Send Message">Send</button>-->
+                <input type="submit" value="Send Message" class="btn">
+            </form>
+
         </section>
     </main>
 
@@ -492,6 +508,27 @@
             </div>
         </div>
     </footer>
+
+     <script>
+        // Initialize EmailJS with your actual User ID (replace with your actual user ID)
+        emailjs.init("oR7ZJBVPDdqfHJrmd"); // Replace with your EmailJS user ID
+
+        // Form submission handler
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Ensure you are passing the correct service ID, template ID, and form element
+            emailjs.sendForm('service_7pcl4h6', 'template_doz8jbr', this) // 'this' refers to the form element
+                .then(function(response) {
+                    alert("Message sent successfully!");
+                    document.getElementById("contact-form").reset(); // Reset the form
+                }, function(error) {
+                    alert("Failed to send message. Please try again.");
+                    console.error("Error sending email:", error);
+                });
+        });
+    </script>
+
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
         var typed = new Typed('#element', {
